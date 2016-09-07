@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>demo</title>
+		<style type="text/css">
+			body{
+				overflow: hidden;
+			}
+			a{
+				text-decoration: none;
+				color: #555;
+			}
+			.clr{
+				width: 0;
+				height: 0;
+				overflow: hidden;
+				clear: both;
+				padding: 0;
+				margin: 0;
+			}
+			#items{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#items input,#items a{
+				width: 20%;
+				height: 44px;
+				line-height: 44px;
+				position: fixed;
+				bottom: 0;
+			}
+			#items input{
+				opacity: 0;
+				z-index: 1000;/**越后优先级越高，设置优先级fixed**/
+				cursor: pointer;
+			}
+			#items a{
+				z-index: 10;
+				font-weight: 700;
+				font-size: 16px;
+				background: #e23a6e;
+				text-align: center;
+				color: #fff;
+				box-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+				
+			}
+			/**改变left,+ 号表示紧跟**/
+			#control-1,#control-1 + a{
+				left: 0%;
+			}
+			#control-2,#control-2 + a{
+				left: 20%;
+			}
+			#control-3,#control-3 + a{
+				left: 40%;
+			}
+			#control-4,#control-4 + a{
+				left: 60%;
+			}
+			#control-5,#control-5 + a{
+				left: 80%;
+			}
+			#items input:checked + a,
+			#items input:checked:hover + a{
+				background: #821134;
+			}
+			/**动态生成的，:after**/
+			#items input:checked + a:after{
+				content: "";
+				width: 0;
+				height: 0;
+				overflow: hidden;
+				border:20px solid transparent;
+				border-bottom-color: #821134;
+				position: absolute;
+				bottom: 100%;
+				left: 50%;
+				margin-left: -20px;
+			}
+			#items input:hover + a{
+				background: #ad244f;
+			}
+			/** 内容 **/
+			#scroll,.panel{
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			#scroll{
+				left: 0;
+				top: 0;
+				/**使用3d在手机端开启硬件加速**/
+				-webkit-transform: translate3d(0,0,0);
+				-moz-transform: translate3d(0,0,0);
+				-o-transform: translate3d(0,0,0);
+				-ms-transform: translate3d(0,0,0);
+				transform: translate3d(0,0,0);
+
+				/**当页面不面向屏幕时隐藏**/
+				-webkit-backface-visibility: hidden;
+				-moz-backface-visibility: hidden;
+				-o-backface-visibility: hidden;
+				-ms-backface-visibility: hidden;
+				backface-visibility: hidden;
+
+				-webkit-transition: all 0.6s ease-in-out;
+				-moz-transition: all 0.6s ease-in-out;
+				-o-transition: all 0.6s ease-in-out;
+				-ms-transition: all 0.6s ease-in-out;
+				transition: all 0.6s ease-in-out;
+
+			}
+			.panel{
+				background: #fff;
+				overflow: hidden;
+			}
+			#control-1:checked ~ #scroll{
+				-webkit-transform: translateY(0%);
+				-moz-transform: translateY(0%);
+				-o-transform: translateY(0%);
+				-ms-transform: translateY(0%);
+				transform: translateY(0%);
+			}
+			#control-2:checked ~ #scroll{
+				-webkit-transform: translateY(-100%);
+				-moz-transform: translateY(-100%);
+				-o-transform: translateY(-100%);
+				-ms-transform: translateY(-100%);
+				transform: translateY(-100%);
+			}
+			#control-3:checked ~ #scroll{
+				-webkit-transform: translateY(-200%);
+				-moz-transform: translateY(-200%);
+				-o-transform: translateY(-200%);
+				-ms-transform: translateY(-200%);
+				transform: translateY(-200%);
+			}
+			#control-4:checked ~ #scroll{
+				-webkit-transform: translateY(-300%);
+				-moz-transform: translateY(-300%);
+				-o-transform: translateY(-300%);
+				-ms-transform: translateY(-300%);
+				transform: translateY(-300%);
+			}
+			#control-5:checked ~ #scroll{
+				-webkit-transform: translateY(-400%);
+				-moz-transform: translateY(-400%);
+				-o-transform: translateY(-400%);
+				-ms-transform: translateY(-400%);
+				transform: translateY(-400%);
+			}
+			.icon{
+				width: 200px;
+				height: 200px;
+				background: #fa96b5;
+				position: absolute;
+				left: 50%;
+				top: 0;
+				margin-left: -100px;
+				-webkit-transform: translateY(-50%) rotate(45deg);
+				-ms-transform: translateY(-50%) rotate(45deg);
+				-moz-transform: translateY(-50%) rotate(45deg);
+				-o-transform: translateY(-50%) rotate(45deg);
+				transform: translateY(-50%) rotate(45deg);
+			}
+			/**属性选择器，在最后插入**/
+			[data-icon]:after{
+				content: attr(data-icon);
+				width: 200px;
+				height: 200px;
+				color: white;
+				font-size: 30px;
+				text-align: center;
+				line-height: 200px;
+				position: absolute;
+				left: 45%;
+				top: 45%;
+				margin: -100px 0 0 -100px;
+				-webkit-transform: rotate(-45deg) translateY(25%);
+				text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+			}
+			.panel h2{
+				color: #e23a6e;
+				font-size: 54px;
+				line-height: 50px;
+				font-weight: 900;
+				text-align: center;
+				position: absolute;
+				width: 80%;
+				left: 10%;
+				top: 50%;
+				margin-top: -70px;
+				text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+				-webkit-backface-visibility: hidden;
+				-moz-backface-visibility: hidden;
+				-ms-backface-visibility: hidden;
+				-o-backface-visibility: hidden;
+				backface-visibility: hidden;
+			}
+			#control-1:checked ~ #scroll #panel-1 h2,
+			#control-2:checked ~ #scroll #panel-2 h2,
+			#control-3:checked ~ #scroll #panel-3 h2,
+			#control-4:checked ~ #scroll #panel-4 h2,
+			#control-5:checked ~ #scroll #panel-5 h2{
+				-webkit-animation: moveDown 0.6s ease-in-out 0.2s backwards;
+				-moz-animation: moveDown 0.6s ease-in-out 0.2s backwards;
+				-ms-animation: moveDown 0.6s ease-in-out 0.2s backwards;
+				-o-animation: moveDown 0.6s ease-in-out 0.2s backwards;
+				animation: moveDown 0.6s ease-in-out 0.2s backwards;
+			}
+			@-webkit-keyframes moveDown{
+				0%{
+					-webkit-transform: translateX(400px);
+					opacity: 0;
+				}
+				100%{
+					-webkit-transform: translateX(0);
+					opacity: 1;
+				}
+			}
+			.panel-color{
+				background: #fa96b5;
+			}
+			.panel-color .icon{
+				background: #fff;
+			}
+			.panel-color [data-icon]:after{
+				color: #fa96b5;
+			}
+			.panel-color h2{
+				color: #fff;
+				text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+			}
+			@media screen and (max-width: 769px){
+				.panel h2{
+					font-size: 32px;
+				}
+				#items > a{
+					font-size: 13px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="items">
+				<!-- nav begin -->
+				<input type="radio" name="radio-set" checked="checked" id="control-1">
+				<a href="#panel-1">首页</a>
+				<input type="radio" name="radio-set" id="control-2">
+				<a href="#panel-2">关于我们</a>
+				<input type="radio" name="radio-set" id="control-3">
+				<a href="#panel-3">我们做什么</a>
+				<input type="radio" name="radio-set" id="control-4">
+				<a href="#panel-4">我们的案例</a>
+				<input type="radio" name="radio-set" id="control-5">
+				<a href="#panel-5">联系我们</a>
+				<!-- nav end content begin-->
+				<!-- 自定义属性尽量用data开头-->
+				<div id="scroll">
+					<section class="panel" id="panel-1">
+						<div class="icon" data-icon="首页"></div>
+						<h2>首页XXXXXXXXXXXXXXXX</h2>
+					</section>
+					<section class="panel panel-color" id="panel-2">
+						<div class="icon" data-icon="关于我们"></div>
+						<h2>关于我们XXXXXXXXXXXXXXXX</h2>
+					</section>
+					<section class="panel" id="panel-3">
+						<div class="icon" data-icon="我们做什么"></div>
+						<h2>我们做什么XXXXXXXXXXXXXX</h2>
+					</section>
+					<section class="panel panel-color" id="panel-4">
+						<div class="icon" data-icon="我们的案例"></div>
+						<h2>我们的案例XXXXXXXXXXXXXX</h2>
+					</section>
+					<section class="panel" id="panel-5">
+						<div class="icon" data-icon="联系我们"></div>
+						<h2>联系我们XXXXXXXXXXXXXXX</h2>
+					</section>
+				</div>
+			</div>
+
+		</div>	
+	</body>
+</html>
