@@ -1,0 +1,187 @@
+#container{
+	width: 100%;
+	height: 900px;
+	position: relative;
+}
+header{
+	width: 100%;
+	height: 50px;
+
+}
+header img{
+	margin-left: 115px;
+	margin-top: 2px;
+	float: left;
+}
+header a{
+	text-decoration: none;
+	color: black;
+}
+#title{
+	line-height: 40px;
+	font-size: 16px;
+}
+#line{
+	color: gray;
+	opacity: 0.3; /**设置透明度**/
+}
+#signin{
+	float: right;
+	margin-right:80px;
+	line-height: 40px;
+	text-decoration: none;
+}
+.banner{
+	height: 235px;
+	width: 100%;
+	background: rgb(255,71,81);
+}
+#big{
+	position: relative;
+	float: left;
+	margin-left: 120px;
+	margin-top: 26px;
+}
+#play{
+	position: absolute;
+	left: 120px;
+	top: 55px;
+	cursor: pointer;
+}
+.bannerText{
+	float:right;
+	margin-right: 220px;
+	margin-top: 30px;
+}
+.bannerText h2{
+	color: white;
+}
+.bannerText p{
+	color: white;
+	opacity: 0.8;
+}
+.bannerText button{
+	width: 120px;
+	height: 35px;
+	background: rgb(255,167,171);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	color: white;
+}
+.content{
+	height: 375px;
+	width: 100%;
+}
+.content h2{
+	text-align: center;
+}
+.profile div{
+	float: left;
+	margin-left: 130px;
+}
+.profile div img{
+	margin-left: 90px;
+}
+.profile div h3{
+	text-align: center;
+	font-weight: bold;
+}
+.profile2 div{
+	float: left;
+	margin-left: 130px;
+}
+.profile2 div img{
+	margin-left: 90px;
+}
+.profile2 div h3{
+	text-align: center;
+	font-weight: bold;
+}
+#footer{
+	height: 200px;
+	width: 100%;
+	float: left;
+	background: rgb(249,249,249);
+}
+.contact{
+	float: left;
+	margin-left: 150px;
+	line-height: 20px;
+}
+.get{
+	float: left;
+	margin-left: 20%;
+}
+.ke{
+	float: left;
+	margin-left: 20%;
+}
+.ke img{
+	float: left;
+	margin-top: 8px;
+}
+.copy{
+	float: left;
+	width: 100%;
+	text-align: center;
+	color: gray;
+	opacity: 0.8;
+}
+#videoShow{
+	position: fixed;
+	left: 450px;
+	top: 300px;
+}
+.hide{
+	display: none;
+}
+#close{
+	position: absolute;
+	top: -25px;
+	right: -10px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+@media(max-width: 769px){
+	header img{
+		margin-left: 80px;
+	}
+	#big{
+		margin-left: 70px;
+	}
+	.banner{
+		height: 425px;
+	}
+	#footer{
+		height: 380px;
+	}
+	#videoShow{
+		position: fixed;
+		left: 20px;
+		top: 300px;
+	}
+	.bannerText{
+		position: absolute;
+		width: 250px;
+		top: 230px;
+		left: 100px;
+	}
+	.profile div,.profile2 div{
+		margin-left: 90px;
+	}
+	.contact{
+		margin-left: 130px;
+	}
+	.get{
+		margin-left: 130px;
+	}
+	.ke{
+		width: 300px;
+	}
+	.ke img{
+		margin-left: 80px;
+	}
+
+}

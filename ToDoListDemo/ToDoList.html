@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>To do list</title>
+		<script type="text/javascript" src="jquery-2.1.4.js"></script>
+		<script type="text/javascript" src="todolist.js"></script>
+		<link type="text/css" href="todolist.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="container">
+			<center>
+			<div id="header">
+				<input type="text" id="inputToDo" placeholder="做点什么呢"/>
+				<button id="addbtn" onclick="addList()">添加</button>
+			</div>
+			</center>
+			<div id="main">
+				<div id="toDoList">
+					<h3>正在进行中</h3>
+					<div id="todoNum" class="number">0</div>
+					<div id="toDo"></div>
+				</div>
+
+				<div id="completeList">
+					<h3>已完成</h3>
+					<div id="completeNum" class="number">0</div>
+					<div id="complete"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

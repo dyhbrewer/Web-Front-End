@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CheckFormDemo</title>
+		<style type="text/css">
+			span{color: red;}
+			#msg.show{
+				position: absolute;
+				background: yellow;
+				padding: 4px;
+				font-size: 12px;
+				top: 0px;
+				left: 0px;
+				width: 632px; 
+				height: 15px;
+			}
+
+			form{
+				position: relative;
+				background: rgb(255,185,0);
+				width: 600px;
+				height: 300px;
+				padding: 20px;
+				margin: 30px auto;
+			}
+		</style>
+		<script src="jquery-2.1.4.js"></script>
+		<script type="text/javascript">
+			//jquery ajax验证username
+			function CheckName(){
+				var url="checkuser_post.php";
+				data="username="+myForm.username.value;
+				$.post(url, data, function(data,status){
+					$("#msg").addClass("show");
+					$("#msg").html(data);
+				});
+			}
+
+			function CheckList () {
+				// body...
+				var msg=$("#msg");
+				var passwordJQ=$("input[name='password1']");
+				var password2JQ=$("input[name='password2']");
+				var radioFlag=false;
+				var checkboxFlag=false;
+
+				if ($("input[name='username']").val()=="") {
+					msg.addClass("show");
+					msg.text("请输入用户名")
+					$("input[name='username']").focus();
+					return false;
+				}else{
+					msg.removeClass("show");
+					msg.text();
+				}
+
+				if ($("input[name='password']").val()==""){
+					msg.addClass("show");
+					msg.text("请输入密码");
+					$("[input='password']").focus();
+					return false;
+				}else{
+					msg.removeClass("show");
+					msg.text("");
+				}
+
+
+				if (password2JQ.val()=="") {
+					msg.addClass("show");
+					msg.text("请再次确认密码");
+					password2JQ.focus();
+					return false;
+				}
+				else{
+					msg.removeClass("show");
+					msg.text("");
+				}
+
+
+				if ($("select[name='city']").val()=="xuanze") {
+					msg.addClass("show");
+					msg.text("请选择所在城市");
+					$("select[name='city']").focus();
+					return false;
+				}else{
+					msg.removeClass("show");
+					msg.text("");
+				}
+
+				//判断radio是否被选中
+				$("input[name='sex']").each(function(){
+					if ($(this).is(":checked")) {
+						radioFlag=true;
+					}
+				});
+				if (radioFlag) {
+					msg.removeClass("show");
+					msg.text("");
+				}else{
+					msg.addClass("show");
+					msg.text("请选择性别");
+					$("#male").focus();
+					return false;
+				}
+
+				//判断checkbox是否被选中
+				$("input[name='like']").each(function(){
+					if ($(this).is(":checked")) {
+						checkboxFlag=true;
+					}
+				});
+				if (checkboxFlag) {
+					msg.removeClass("show");
+					msg.text("");
+				}else{
+					msg.addClass("show");
+					msg.text("请选择爱好");
+					$("#football").focus();
+					return false;
+				}
+				return true;
+			}
+
+			function CheckPwd(){
+
+				var msg=$("#msg");
+				if ($("input[name='password']").val()==""){
+					msg.addClass("show");
+					msg.text("请输入密码");
+					$("input[name='password']").focus();
+				}else{
+					msg.removeClass("show");
+					msg.text("");
+				}
+				
+			}
+			function CheckPwd2(){
+				// body...
+				var msg=$("#msg");
+				var passwordJQ=$("input[name='password1']");
+				var password2JQ=$("input[name='password2']");
+
+				if (password2JQ.val()=="") {
+					msg.addClass("show");
+					msg.text("请再次确认密码");
+					password2JQ.focus();
+				}else if (passwordJQ.text()!=password2JQ.text()) {
+					msg.addClass("show");
+					msg.text("密码不一致，请再次输入");
+				}
+				else{
+					msg.removeClass("show");
+					msg.text("");
+				}
+			}
+			function CheckSelect(){
+
+				var msg=$("#msg");
+				if ($("select[name='city']").val()=="xuanze") {
+					msg.addClass("show");
+					msg.text("请选择所在城市");
+					$("select[name='city']").focus();
+				}else{
+					msg.removeClass("show");
+					msg.text("");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+		<form action="checklist.php" method="post" onsubmit="return CheckList()" name="myForm">
+			<div id="msg"></div>
+			<p><span>*</span>用户名：<input type="text" name="username"  onblur="CheckName()" /></p>
+			<p><span>*</span>密码：<input type="password" name="password" onblur="CheckPwd()"/></p>
+			<p><span>*</span>确认密码：<input type="password" name="password2"  onblur="CheckPwd2()" /></p>
+			<p><span>*</span>城市：
+				<select name="city" onblur="CheckSelect()">
+					<option value="xuanze">请选择城市...</option>
+					<option value="xiamen">厦门</option>
+					<option value="fuzhou">福州</option>
+					<option value="beijing">北京</option>
+				</select>
+			</p>
+			<p><span>*</span>性别
+				<input id="male" type="radio" name="sex" value="male"/>男
+				<input id="female" type="radio" name="sex" value="female"/>女
+			</p>
+			<p><span>*</span>爱好：
+				<input name="like" id="football" type="checkbox" value="football"/>足球
+				<input name="like" id="basketball" type="checkbox" value="basketball"/>篮球
+				<input name="like" id="pingpangball" type="checkbox" value="pingpangball">乒乓球
+			</p>
+			<input type="submit" value="提交"/>
+		</form>
+		</center>
+	</body>
+</html>

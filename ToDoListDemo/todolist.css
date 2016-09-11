@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+#container{
+	min-height: 500px;
+	width: 800px;
+	margin: 40px auto;
+	padding: 20px;
+}
+#toDoList{
+	width: 370px;
+	float: left;
+	background: rgb(255,135,0);
+	margin-top: 20px;
+	margin-right: 20px;
+	padding: 10px;
+}
+#completeList{
+	margin-top: 20px;
+	width: 370px;
+	float: left;
+	background: gray;
+	padding: 10px;
+}
+#toDo{
+	clear: both;
+	font-size: medium;
+	padding: 2px;
+}
+#complete{
+	clear: both;
+}
+#inputToDo{
+	width: 280px;
+	height: 25px;
+}
+.number{
+	float: right;
+	margin:10px 5% auto;
+	color: white;
+}
+h3{
+	float: left;
+	margin-top: 10px;	
+}
+#addbtn{
+	width: 70px;
+	height: 30px;
+	background: rgb(255,135,0);
+	border: none;
+	color: white;
+}
+.item,.doneItem{
+	position: relative;
+	font-size: 18px;
+	height: 22px;
+	margin-bottom: 5px;
+	border: 1px solid ;
+	padding: 2px;
+	border-radius: 5px;
+}
+.content{
+	color: white;
+}
+.deleBtn{
+	position: absolute;
+	right: 5px;
+	border-radius: 10px;
+	border: none;
+	background: white;
+	color: red;
+}

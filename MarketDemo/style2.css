@@ -1,0 +1,117 @@
+#container{
+	padding: 0px 40px;
+}
+.left{
+	width: 20%;
+	height: 859px;
+	float: left;
+	position: fixed;
+	
+}
+#title{
+	margin-left: 40px;
+	list-style: none;
+	border: black solid 3px;
+	padding: 3px;  /**设置padding后，字体移动，默认无填充**/
+	width: 30px;
+	font-size: 25px;
+}
+#catagary{
+	list-style: none;
+}
+#catagary a{
+	color: black;
+	text-decoration: none;
+	font-size: 15px;
+}
+#catagary a:hover{
+	color: red;
+}
+#about{
+	list-style: none;
+}
+#about a{
+	color: gray;
+	text-decoration: none;
+	font-size: 10px;
+}
+#about a:hover{
+	color: red;
+}
+#right{
+	margin-left: 25%;
+	margin-top: 20px;
+}
+.itemImg{
+	float: left;
+}
+.profile{
+	float: left;
+	margin-top: 20px;
+	padding: 40px;
+	
+}
+.mens a{
+	text-decoration: none;
+	color: gray;
+}
+.mens{
+	margin-top: 20px;
+	font-size: 12px;
+}
+.title{
+	margin-top: 40px;	
+	font-weight: bold;
+}
+.price {
+	margin-top: 20px;
+	color: red;
+}
+.detail{
+	margin-top: 30px;
+	color: gray;
+}
+.source{
+	margin-top: 20px;
+	color: gray;
+}
+.quantity{
+	margin-top: 30px;
+	color: gray;
+	font-size: 12px;
+}
+.addBtn {
+	height: 40px;
+	width: 120px;
+	background: black;
+	margin-top: 30px;
+	color: white;
+	text-align: center;
+	font-weight: 700;
+	line-height: 40px;/**设置字体行高与容器高一致，即居中**/
+	cursor: pointer;
+}
+.share a{
+	text-decoration: none;
+	color: gray;
+}
+.share{
+	margin-top: 10px;
+}
+#pay{
+	position: fixed;
+	background: black;
+	color: white;
+	top: 0px;
+	right: 0px;
+	width: 250px;
+	height: 60px;
+	line-height: 60px;
+	font-size: 16px;
+}
+#pay img{
+	float: left;
+}
+#cartNum{
+	margin-right: 20px;
+}
